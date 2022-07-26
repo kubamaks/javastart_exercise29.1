@@ -1,0 +1,19 @@
+Treść zadania
+To zadanie możesz zrealizować jako osobną aplikację, albo dodając poniższe funkcjonalności do jednej z Twoich aplikacji z poprzedniego zadania. Upewnij się, że zmiany dodajesz na osobnym branchu i utwórz Pull Request, który posiada tylko i wyłącznie zmiany związane z tym zadaniem.
+
+Aplikacja powinna posiadać następujące funkcjonalności:
+
+Formularz rejestracji (1 punkt)
+Na stronie głównej powinien istnieć link do formularza który umożliwia rejestrację nowego użytkownika. Użytkownik podaje nazwę użytkownika i hasło. Po rejestracji powinien zostać przekierowany do formularza logowania. Przy formularzu powinna być wyświetlona informacja o tym, że konto zostało utworzone.
+
+Formularz logowania (1 punkt)
+Na stronie głównej powinien również istnieć link kierujący do formularza logowania. Formularz powinien być spersonalizowany korzystając np z biblioteki Bootstrap.
+
+Ustawienia profilu i zmiana hasła (2 punkty)
+Zalogowany użytkownik powinien mieć możliwość zmiany swojego imienia i nazwiska oraz hasła.
+
+Administracja (2 punkty)
+Użytkownicy posiadający rolę ADMIN powinni mieć możliwość przeglądania listy użytkowników oraz nadawania im ról. Administrator może mianować kolejnych administratorów nadając im rolę ADMIN. Powinna również istnieć możliwość dymisji administratorów poprzez odbieranie im tej roli.
+
+Dodatkowe wymagania
+Hasło musi być szyfrowane.
