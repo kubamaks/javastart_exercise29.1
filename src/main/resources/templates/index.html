@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pl"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      layout:decorate="~{layout}">
+<head>
+    <title>Strona główna</title>
+</head>
+<div layout:fragment="content" class="content">
+    <div sec:authorize="isAnonymous()">
+        <h2 class="text-center">Witaj nieznajomy !</h2>
+        <div class="text-center">Ta strona powstała by potrenować działanie profilowania w Spirng Security.</div>
+        <div class="text-primary">
+            <ul> W zależności od profilu na jaki się zalogujesz będziesz mieć dostęp do innych treści:
+                <li>Jako użytkownik możesz zmieniać swoje dane, hasło lub usunąć konto.</li>
+                <li>Po zalogowaniu na koncie administratora będziesz dodatkowo mieć dostęp do listy
+                    wszystkich użytkowników wraz z możliwością zmiany ich uprawnień oraz usuwania kont.
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div sec:authorize="hasRole('USER')">
+        <h2 class="text-center">Witaj <span sec:authentication="name"></span> !</h2>
+        <div class="text-center text-primary mt-4">
+            Teraz masz dostęp do panelu użytkownika gdzie możesz edytować swój profil.
+        </div>
+    </div>
+    <div sec:authorize="hasRole('ADMIN')">
+        <div class="text-primary mt-5 text-center">
+            Jako administrator dodatkowo masz dostęp do panelu administratora gdzie możesz
+            edytować uprawnienia unnych użytkowników.
+        </div>
+    </div>
+
+</div>
+</html>

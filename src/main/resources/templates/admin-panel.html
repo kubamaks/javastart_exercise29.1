@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pl"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <title>Panel Administratora</title>
+</head>
+<div layout:fragment="content" class="content">
+    <div class="text-center"><h2>Lista użytkowników:</h2></div>
+    <table class="table mt-5 text-center">
+        <thead>
+        <tr>
+            <th>Nazwa</th>
+            <th>Imię</th>
+            <th>Nazwisko</th>
+            <th>Email</th>
+            <th>Administrator?</th>
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="u:${users}">
+            <td th:text="${u.login}">adamus</td>
+            <td th:text="${u.firstName}">Adam</td>
+            <td th:text="${u.lastName}">Adamski</td>
+            <td th:text="${u.email}">adamekadamski@adamowo.pl</td>
+            <td><span th:if="${u.isAdmin()}">TAK</span><span th:unless="${u.isAdmin()}">NIE</span></td>
+            <td>
+                <span th:if="${u.isAdmin()}">
+                    <a th:href="@{|/admin/${u.id}/zmienuprawnienia|}"
+                       class="btn btn-outline-secondary small-text" role="button">ODBIERZ UPRAWNIENIA</a>
+                </span>
+                <span th:unless="${u.isAdmin()}">
+                    <a th:href="@{|/admin/${u.id}/zmienuprawnienia|}"
+                       class="btn btn-outline-secondary small-text" role="button">NADAJ UPRAWNIENIA</a>
+                </span>
+            </td>
+            <td>
+                <a th:unless="${u.isAdmin()}"th:href="@{|/admin/${u.id}/usun|}"
+                   class="btn btn-outline-danger" role="button">USUŃ</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</html>

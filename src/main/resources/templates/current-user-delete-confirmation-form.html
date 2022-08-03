@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="pl"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <title>Potwierdzenie usuniecia konta</title>
+</head>
+<div layout:fragment="content" class="content">
+    <div class="mt-4">Czy na pewno chcesz usunąć konto?</div>
+    <div>
+        <a th:href="@{/uzytkownik}" class="btn btn-outline-success mt-4" role="button">NIE</a>
+        <a th th:href="@{/uzytkownik/usun}" class="btn btn-outline-danger mt-4" role="button">TAK</a>
+    </div>
+</div>
