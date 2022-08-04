@@ -2,6 +2,7 @@
 <html lang="pl"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       layout:decorate="~{layout}">
 <head>
     <title>Panel Użytkownika</title>
@@ -26,9 +27,9 @@
         <a th:href="@{/uzytkownik/aktualizacja}" class="btn btn-outline-secondary mt-4" role="button">AKTUALIZUJ DANE</a>
         <a th:href="@{/uzytkownik/zmianahasla}" class="btn btn-outline-secondary mt-4" role="button">ZMIEŃ HASŁO</a>
         <div class="text-muted mt-4">
-        <a th:unless="*{isAdmin()}" th:href="@{/uzytkownik/potwierdzusuniecie}" class="btn btn-outline-danger" role="button">USUŃ KONTO</a>
-        <span th:if="*{isAdmin()}">Jeśli chcesz usunąć konto, to musisz najpierw zrezygnować z roli admnistratora.
-            <BR/>(Jak pewnie wiesz, może Cię jej pozbawić inny administrator.)</span>
+        <a sec:authorize="!hasRole('ADMIN')" th:href="@{/uzytkownik/potwierdzusuniecie}" class="btn btn-outline-danger" role="button">USUŃ KONTO</a>
+        <span sec:authorize="hasRole('ADMIN')">Jeśli chcesz usunąć konto, to musisz najpierw zrezygnować z roli admnistratora.
+            <br/>(Jak pewnie wiesz, może Cię jej pozbawić inny administrator.)</span>
         </div>
     </div>
 

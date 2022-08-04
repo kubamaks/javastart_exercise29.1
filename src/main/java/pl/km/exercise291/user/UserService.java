@@ -4,8 +4,8 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
 import pl.km.exercise291.user.dto.UserDto;
-import pl.km.exercise291.user.dto.UserDtoWithId;
 import pl.km.exercise291.user.dto.UserRegistrationDto;
 import pl.km.exercise291.user.dto.UserCredentialsDto;
 
@@ -100,10 +100,10 @@ public class UserService {
         return UserMapper.mapUserDto(findCurrentUser());
     }
 
-    public List<UserDtoWithId> allUsersBesidesCurrent() {
+    public List<UserDto> allUsersBesidesCurrent() {
         return userRepository.findAll().stream()
                 .filter(u -> !u.equals(findCurrentUser()))
-                .map(UserMapper::mapUserDtoWithId).toList();
+                .map(UserMapper::mapUserDto).toList();
     }
 
     @Transactional

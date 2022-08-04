@@ -63,7 +63,7 @@ class UserController {
             return "password-form";
         }
         userService.changePassword(password);
-        return "redirect:/wylogowano?status=haslozmienione";
+        return "redirect:/wyloguj?status=haslozmienione";
     }
 
     @GetMapping("potwierdzusuniecie")
@@ -74,7 +74,7 @@ class UserController {
     @GetMapping("usun")
     public String removeAccountForCurrentUser() {
         userService.removeCurrentUser();
-        return "redirect:/wylogowano?status=kontousuniete";
+        return "redirect:/wyloguj?status=kontousuniete";
     }
 
 }

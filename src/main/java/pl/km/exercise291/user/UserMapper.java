@@ -2,8 +2,6 @@ package pl.km.exercise291.user;
 
 import pl.km.exercise291.user.dto.UserCredentialsDto;
 import pl.km.exercise291.user.dto.UserDto;
-import pl.km.exercise291.user.dto.UserDtoWithId;
-
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -21,16 +19,6 @@ class UserMapper {
 
     static UserDto mapUserDto(User user) {
         UserDto userDto = new UserDto();
-        userDto.setLogin(user.getLogin());
-        userDto.setFirstName(user.getFirstName());
-        userDto.setLastName(user.getLastName());
-        userDto.setEmail(user.getEmail());
-        userDto.setAdmin(UserService.isUserAdmin(user));
-        return userDto;
-    }
-
-    static UserDtoWithId mapUserDtoWithId(User user) {
-        UserDtoWithId userDto = new UserDtoWithId();
         userDto.setId(user.getId());
         userDto.setLogin(user.getLogin());
         userDto.setFirstName(user.getFirstName());

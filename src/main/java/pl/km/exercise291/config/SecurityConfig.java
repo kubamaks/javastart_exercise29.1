@@ -2,11 +2,14 @@ package pl.km.exercise291.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+
 import static pl.km.exercise291.templates.AppTemplates.*;
 
 @Configuration
@@ -18,6 +21,7 @@ class SecurityConfig {
                 .mvcMatchers("/rejestracja", "/zarejestruj", "/h2-console/**").permitAll()
                 .mvcMatchers("/uzytkownik/***").hasAnyRole(USER_ROLE, ADMIN_ROLE)
                 .mvcMatchers("/admin/**").hasAnyRole(ADMIN_ROLE)
+                .antMatchers("/h2-console/**").permitAll()
                 .anyRequest().authenticated()
         );
 
@@ -28,12 +32,13 @@ class SecurityConfig {
                 .permitAll()
         );
         http.logout(logout -> logout
-                .logoutUrl("/wyloguj")
+                .logoutRequestMatcher(new AntPathRequestMatcher("/wyloguj/**", HttpMethod.GET.name()))
+                .logoutSuccessHandler(new CustomLogoutSuccessHandler())
                 .logoutSuccessUrl("/")
                 .permitAll()
         );
-        http.csrf().disable();
-        http.headers().frameOptions().disable();
+        http.csrf().ignoringAntMatchers("/h2-console/**");
+        http.headers().frameOptions().sameOrigin();
         return http.build();
     }
 

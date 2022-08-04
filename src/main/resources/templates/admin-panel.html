@@ -30,7 +30,7 @@
             <td>
                 <span th:if="${u.isAdmin()}">
                     <a th:href="@{|/admin/${u.id}/zmienuprawnienia|}"
-                       class="btn btn-outline-secondary small-text" role="button">ODBIERZ UPRAWNIENIA</a>
+                       class="btn btn-outline-danger small-text" role="button">ODBIERZ UPRAWNIENIA</a>
                 </span>
                 <span th:unless="${u.isAdmin()}">
                     <a th:href="@{|/admin/${u.id}/zmienuprawnienia|}"
@@ -38,8 +38,8 @@
                 </span>
             </td>
             <td>
-                <a th:unless="${u.isAdmin()}"th:href="@{|/admin/${u.id}/usun|}"
-                   class="btn btn-outline-danger" role="button">USUŃ</a>
+                <a th:unless="${u.isAdmin()}" th:href="@{|/admin/${u.id}/usun|}"
+                   class="btn btn-outline-danger small-text" role="button">USUŃ UŻYTKOWNIKA</a>
             </td>
         </tr>
         </tbody>
