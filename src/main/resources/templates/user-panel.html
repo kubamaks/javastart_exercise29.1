@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pl"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      layout:decorate="~{layout}">
+<head>
+    <title>Panel Użytkownika</title>
+</head>
+<div layout:fragment="content" class="content">
+    <div th:object="${user}" class="container">
+        <h2 class="mt-4" th:text="|Cześć *{login} oto twoje dane|"></h2>
+        <table class="mt-4">
+            <tr>
+                <td th:text="'imię:'"></td>
+                <td th:text="*{firstName}"></td>
+            </tr>
+            <tr>
+                <td th:text="'nazwisko:'"></td>
+                <td th:text="*{lastName}"></td>
+            </tr>
+            <tr>
+                <td th:text="'email:'"></td>
+                <td th:text="*{email}"></td>
+            </tr>
+        </table>
+        <a th:href="@{/uzytkownik/aktualizacja}" class="btn btn-outline-secondary mt-4" role="button">AKTUALIZUJ DANE</a>
+        <a th:href="@{/uzytkownik/zmianahasla}" class="btn btn-outline-secondary mt-4" role="button">ZMIEŃ HASŁO</a>
+        <div class="text-muted mt-4">
+        <a sec:authorize="!hasRole('ADMIN')" th:href="@{/uzytkownik/potwierdzusuniecie}" class="btn btn-outline-danger" role="button">USUŃ KONTO</a>
+        <span sec:authorize="hasRole('ADMIN')">Jeśli chcesz usunąć konto, to musisz najpierw zrezygnować z roli admnistratora.
+            <br/>(Jak pewnie wiesz, może Cię jej pozbawić inny administrator.)</span>
+        </div>
+    </div>
+
+
+</div>
+</html>

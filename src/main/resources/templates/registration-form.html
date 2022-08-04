@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pl"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <title>formularz rejestracyjny</title>
+</head>
+<div layout:fragment="content" class="content">
+    <div class="container d-flex align-items-center justify-content-center">
+    <form th:object="${user}" th:action="|@{/zarejestruj}|" action="/zarejestruj" method="post">
+        <div class="form-group row">
+            <label for="login" class="col-sm-2 col-form-label">login</label>
+            <div class="col-sm-10">
+                <input id="login" th:field="*{login}" type="text" placeholder="login" class="form-control"/>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="firstName" class="col-sm-2 col-form-label">imię</label>
+            <div class="col-sm-10">
+                <input id="firstName" th:field="*{firstName}" type="text" placeholder="imię" class="form-control"/>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="lastName" class="col-sm-2 col-form-label">nazwisko</label>
+            <div class="col-sm-10">
+                <input id="lastName" th:field="*{lastName}" type="text" placeholder="nazwisko" class="form-control"/>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="email" class="col-sm-2 col-form-label">email</label>
+            <div class="col-sm-10">
+                <input id="email" th:field="*{email}" type="email" placeholder="twojemail@domena.net"
+                       class="form-control"/>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="password" class="col-sm-2 col-form-label">email</label>
+            <div class="col-sm-10">
+                <input id="password" th:field="*{password}" placeholder="hasło" type="password" class="form-control"/>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-outline-secondary mt-3">ZAREJESTRUJ</button>
+    </form>
+    </div>
+
+</div>
+</html>

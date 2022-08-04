@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="pl"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <title>LOGOWANIE</title>
+</head>
+<div layout:fragment="content" class="content">
+    <div class="container d-flex align-items-center justify-content-center">
+        <form action="/zaloguj" th:action="@{/zaloguj}" method="post">
+            <span th:text="${successMessage}" class="text-success"></span>
+            <div class="text-center">
+                <input name="username" type="text" placeholder="login" class="form-control"/>
+                <input name="password" type="password" placeholder="hasło" class="form-control"/>
+                <button type="submit" class="btn btn-outline-secondary">ZALOGUJ</button>
+            </div>
+        </form>
+    </div>
+
+</div>
+</html>

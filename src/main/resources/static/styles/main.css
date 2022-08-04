@@ -1,0 +1,24 @@
+#app_header {
+    max-height: 50px;
+}
+.btn{
+    margin-top: 3px;
+    margin-left: 3px;
+    margin-right: 3px;
+}
+form {
+    margin-top: 10px;
+    align-items: center;
+    text-align: center;
+    max-width: 450px;
+    min-width: 450px;
+}
+ul {
+    margin-top: 30px;
+}
+.form-group{
+    margin-top: 5px;
+}
+.small-text {
+    font-size: 12px;
+}
